@@ -1,16 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using WPF_DataBinding.DataModel;
 
 namespace WPF_DataBinding
 {
@@ -19,9 +10,36 @@ namespace WPF_DataBinding
     /// </summary>
     public partial class MainWindow : Window
     {
+        ZzaEntities dataContext = new ZzaEntities();
+        Customer firstCustomer;
         public MainWindow()
         {
             InitializeComponent();
+            Loaded += MainWindow_Loaded;
         }
+
+        void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            firstCustomer = dataContext.Customer.FirstOrDefault();
+            lblCustolerId.Text = firstCustomer.Id.ToString();
+            txtCustomerLastName.Text = firstCustomer.LastName;
+
+            var orderDates = dataContext.Order.Where(w => w.CustomerId == firstCustomer.Id).Select(s => s.OrderDate).ToList();
+            OrdersList.ItemsSource = orderDates;
+        }
+
+        private void OnOrderSelected(object sender, RoutedEventArgs e)
+        {
+            var selectedOrder = dataContext.Order.Include("OrderItem").Where(w => w.OrderDate == (DateTime)OrdersList.SelectedItem && w.CustomerId == firstCustomer.Id).FirstOrDefault();
+            OrderItemsDataGrid.ItemsSource = selectedOrder.OrderItem;
+        }
+
+        private void OnSave(object sender, RoutedEventArgs e)
+        {
+            firstCustomer.LastName = txtCustomerLastName.Text;
+
+            dataContext.SaveChanges();
+        }
+
     }
 }

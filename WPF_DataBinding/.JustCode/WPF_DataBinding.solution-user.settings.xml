@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<JustCodeSettings Version="0.0" Timestamp="2ab428f8-bbca-43d9-8385-2ab45c4d3d55">
+  <IgnoredErrorsAndWarningsSettings xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+    <IgnoredErrorsAndWarnings Version="2">
+      <FilePath>
+        <FileRelativePath>WPF_DataBinding/MainWindow.xaml.cs</FileRelativePath>
+        <ProjectRelativePath>WPF_DataBinding/WPF_DataBinding.csproj</ProjectRelativePath>
+        <IgnoredElement>
+          <TextualIdentifier>4859549645418344330</TextualIdentifier>
+        </IgnoredElement>
+      </FilePath>
+    </IgnoredErrorsAndWarnings>
+  </IgnoredErrorsAndWarningsSettings>
+</JustCodeSettings>

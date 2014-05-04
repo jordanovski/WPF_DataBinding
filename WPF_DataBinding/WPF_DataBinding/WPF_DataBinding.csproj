@@ -34,8 +34,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -61,6 +70,45 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DataModel\Customer.cs">
+      <DependentUpon>ZzaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Order.cs">
+      <DependentUpon>ZzaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\OrderItem.cs">
+      <DependentUpon>ZzaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\OrderItemOption.cs">
+      <DependentUpon>ZzaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\OrderStatus.cs">
+      <DependentUpon>ZzaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Product.cs">
+      <DependentUpon>ZzaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\ProductOption.cs">
+      <DependentUpon>ZzaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\ProductSize.cs">
+      <DependentUpon>ZzaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\ZzaModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ZzaModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\ZzaModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ZzaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\ZzaModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ZzaModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -84,11 +132,33 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="DataModel\ZzaModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ZzaModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="App.Config" />
+    <None Include="DataModel\ZzaModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ZzaModel.edmx</DependentUpon>
+      <LastGenOutput>ZzaModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="DataModel\ZzaModel.edmx.diagram">
+      <DependentUpon>ZzaModel.edmx</DependentUpon>
+    </None>
+    <None Include="DataModel\ZzaModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ZzaModel.edmx</DependentUpon>
+      <LastGenOutput>ZzaModel.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
